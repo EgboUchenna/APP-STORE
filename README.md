@@ -35,9 +35,9 @@ $ cd ../app.js
 
 $ npm i -y
 
-Add Jest as a dependency :
+Add Jest as a dev dependency :
 
-$ npm i -D jest
+$ npm i --save jest
 
 Inside your package.json file change scripts test to jest:
 
