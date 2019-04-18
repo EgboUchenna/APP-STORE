@@ -59,6 +59,11 @@ Admin.prototype.readAllUsers = function() {
   }
 };
 
-
+Admin.prototype.deleteUser = function (id) {
+  if (id.toString() !== this.id) {
+    delete db.Users[id];
+    return "User deleted Successfully";
+  }
+}
 
 module.exports = { User, Admin };
