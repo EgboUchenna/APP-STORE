@@ -32,6 +32,10 @@ test('Read User by Id to return a Single User', function() {
   expect(db.Users['1'].name).toBe('Uchenna');
 });
 
+test('Database has values and not empty', function() {
+  expect(Object.keys(db.Users).length).toBeGreaterThan(1);
+})
+
 
 
 
