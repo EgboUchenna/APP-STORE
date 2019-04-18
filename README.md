@@ -45,7 +45,7 @@ Inside your package.json file change scripts test to jest:
     "test": "jest"
   },
 
-$ npm jest
+$ npm test
 
 ```
 
