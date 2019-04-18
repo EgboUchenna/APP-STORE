@@ -12,7 +12,7 @@ function User(name, email, password) {
   }
 
   for (var i = 1; i >= 0; ) {
-    if (!(db.Users[i + ""])) {
+    if (!db.Users[i + ""]) {
       id = i + "";
       db.Users[id] = {
         name: this.name.toString(),
@@ -26,18 +26,24 @@ function User(name, email, password) {
     i++;
   }
   this.id = id;
-
-  
-  console.log(db);
 }
 
-User.prototype.createUserId = function(id) {};
+User.prototype.readSingleUser = function(id) {
+  return db.Users[id.toString()];
+};
 
 
 function Admin(name, email, password) {
   User.apply(this, [name, email, password]);
-
-  Admin.prototype.constructor = Admin;
 }
+
+Admin.prototype = Object.create(User.prototype);
+Admin.prototype.constructor = Admin;
+
+Admin.prototype.readAllUsers = function() {
+  for (var person in db.Users) {
+    return db.Users[person];
+  }
+};
 
 module.exports = { User, Admin };

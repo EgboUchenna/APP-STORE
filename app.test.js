@@ -28,13 +28,23 @@ test('User type to be admin', function() {
 });
 
 test('Read User by Id to return a Single User', function() {
-  console.log(db);
+  // console.log(db);
   expect(db.Users['1'].name).toBe('Uchenna');
 });
 
 test('Database has values and not empty', function() {
   expect(Object.keys(db.Users).length).toBeGreaterThan(1);
-})
+});
+
+test('Admin type in database to be 2', function () {
+  var adminCount = [];
+  for (var value in db.Users){
+    if(db.Users[value].type === 'Admin') {
+      adminCount.push(db.Users[value]);
+    }
+  }
+  expect(adminCount.length).toBe(2);
+});
 
 
 
