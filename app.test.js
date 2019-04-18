@@ -5,6 +5,8 @@ var User1 = new User("Uchenna", "egbouchenna001@gmail.com", 12345);
 var Admin1 = new Admin("Matthew", "Uchesco4jesus@gmail.com", 54321);
 var User2 = new User("Uche", "uche4ma2w@gmail.com", 99887);
 var Admin2 = new Admin("Mhdcb", "hdnksbas@gmail.com", "hjsdkjdj5648792nbmnb");
+var delUser = new User("delUser", "delUser@gmail.com", 9988700);
+
 
 test("User name to be name of the User", function() {
   expect(User1.name).toBe("Uchenna");
@@ -56,3 +58,7 @@ test("A single Admin details to be updated", function() {
     Admin2.updateSingleUser(4, "Muse", "handsumMuse@gmail.com", 77889)
   ).toBe("User updated successfully");
 });
+
+test('Delete a single user by Admin', function () {
+  expect(Admin1.deleteUser(5)).toBe("User deleted Successfully"); 
+})
