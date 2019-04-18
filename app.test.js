@@ -4,7 +4,7 @@ const db = require("./database");
 var User1 = new User("Uchenna", "egbouchenna001@gmail.com", 12345);
 var Admin1 = new Admin("Matthew", "Uchesco4jesus@gmail.com", 54321);
 var User2 = new User("Uche", "uche4ma2w@gmail.com", 99887);
-var Admin2 = new Admin("Muse", "handsumMuse@gmail.com", 77889);
+var Admin2 = new Admin("Mhdcb", "hdnksbas@gmail.com", "hjsdkjdj5648792nbmnb");
 
 test("User name to be name of the User", function() {
   expect(User1.name).toBe("Uchenna");
@@ -45,10 +45,14 @@ test("Admin type in database to be 2", function() {
   expect(adminCount.length).toBe(2);
 });
 
-test('All single user details fields to be updated', function() {
-  expect(User1.updateSingleUser("Uche", "egbouchenna001@gmail.com", 12345)).toBe("All fields are required");
+test("All single user details fields to be updated", function() {
+  expect(
+    User1.updateSingleUser("Uche", "egbouchenna001@gmail.com", 12345)
+  ).toBe("All fields are required");
 });
 
-
-
-
+test("A single Admin details to be updated", function() {
+  expect(
+    Admin2.updateSingleUser(4, "Muse", "handsumMuse@gmail.com", 77889)
+  ).toBe("User updated successfully");
+});
