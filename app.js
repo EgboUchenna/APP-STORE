@@ -32,6 +32,19 @@ User.prototype.readSingleUser = function(id) {
   return db.Users[id.toString()];
 };
 
+User.prototype.updateSingleUser = function(id, name, email, password) {
+  if (!id || !name || !email || !password) {
+    return "All fields are required";
+  }
+  if (id.toString() !== this.id) {
+    return false;
+  }
+  db.Users[id.toString()].name = name;
+  db.Users[id.toString()].email = email;
+  db.Users[id.toString()].password = password;
+  console.log(db);
+  return "User updated successfully";
+};
 
 function Admin(name, email, password) {
   User.apply(this, [name, email, password]);
@@ -45,5 +58,7 @@ Admin.prototype.readAllUsers = function() {
     return db.Users[person];
   }
 };
+
+
 
 module.exports = { User, Admin };
