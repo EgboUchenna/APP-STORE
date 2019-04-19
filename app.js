@@ -42,7 +42,6 @@ User.prototype.updateSingleUser = function(id, name, email, password) {
   db.Users[id.toString()].name = name;
   db.Users[id.toString()].email = email;
   db.Users[id.toString()].password = password;
-  console.log(db);
   return "User updated successfully";
 };
 
@@ -54,16 +53,15 @@ Admin.prototype = Object.create(User.prototype);
 Admin.prototype.constructor = Admin;
 
 Admin.prototype.readAllUsers = function() {
-  for (var person in db.Users) {
-    return db.Users[person];
-  }
+  return db.Users;
 };
 
 Admin.prototype.deleteUser = function(id) {
-  if (id.toString() !== this.id) {
-    delete db.Users[id];
-    return "User deleted Successfully";
+  if (!db.Users[id.toString()]) {
+    return "User not found";
   }
+  delete db.Users[id.toString()];
+  return "User deleted sucessfully";
 };
 
 Admin.prototype.deleteAllUsers = function() {
