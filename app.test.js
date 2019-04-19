@@ -58,8 +58,13 @@ test("A single Admin details to be updated", function() {
   ).toBe("User updated successfully");
 });
 
+test("Delete a single user by Admin not in database", function() {
+  console.log(db);
+  expect(Admin1.deleteUser(6)).toBe("User not found");
+});
+
 test("Delete a single user by Admin", function() {
-  expect(Admin1.deleteUser(5)).toBe("User deleted Successfully");
+  expect(Admin2.deleteUser(5)).toBe("User deleted sucessfully");
 });
 
 test("Delete All Users in database", function() {
