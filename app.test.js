@@ -101,3 +101,8 @@ test("Orders Database has values and not empty", function() {
 test("Odrer to have a Unique Id", function() {
   expect(Order4.id).toBeTruthy();
 });
+
+test('All Orders to be read from database', function() {
+  expect(Order1.readAllOrders()).toEqual(db.Orders)
+});
+
