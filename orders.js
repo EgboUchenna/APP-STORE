@@ -28,10 +28,15 @@ function Orders(user_id, products) {
   }
   this.id = id;
 
-  console.log(db);
 
 }
 
+//  ************************** READ ALL ORDERS  ************************************
+
+Orders.prototype.readAllOrders = function() {
+  console.log(db.orders);
+  return db.Orders;
+}
 
 
 module.exports = { Orders };
