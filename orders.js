@@ -39,4 +39,16 @@ Orders.prototype.readAllOrders = function() {
 }
 
 
+//  ************************** READ ONE ORDER BY ITS ID  ************************************
+
+Orders.prototype.readOneOrderById = function (id) {
+if(!db.Orders[id.toString()]) {
+  return 'Order not found';
+}
+return db.Orders[id.toString()];
+}
+
+
+
+
 module.exports = { Orders };
