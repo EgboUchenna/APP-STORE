@@ -106,3 +106,6 @@ test('All Orders to be read from database', function() {
   expect(Order1.readAllOrders()).toEqual(db.Orders)
 });
 
+test('Read an order by its id', function() {
+  expect(Order2.readOneOrderById(2)).toEqual(db.Orders['2'])
+});
