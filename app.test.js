@@ -97,3 +97,7 @@ test("Delete All Users in database", function() {
 test("Orders Database has values and not empty", function() {
   expect(Object.keys(db.Orders).length).toBeGreaterThan(3);
 });
+
+test("Odrer to have a Unique Id", function() {
+  expect(Order4.id).toBeTruthy();
+});
