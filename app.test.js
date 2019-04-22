@@ -117,3 +117,7 @@ test("Read All Orders by Admin", function() {
   expect(Admin2.readAllOrders()).toEqual(db.Orders);
 });
 
+test("Read Single Orders by Admin", function() {
+  expect(Admin3.readOneOrderById(4).id).toBe("4");
+});
+
