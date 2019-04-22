@@ -148,3 +148,8 @@ test("Update Single Product should update user details", function() {
   ).toBeTruthy();
 });
 
+test("Delete An Order", function() {
+  Admin2.deleteOrder(1);
+  expect(Admin2.readOneOrderById(1)).toBe("Order not found");
+});
+
