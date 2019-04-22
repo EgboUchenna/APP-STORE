@@ -121,3 +121,8 @@ test("Read Single Orders by Admin", function() {
   expect(Admin3.readOneOrderById(4).id).toBe("4");
 });
 
+test("Read Single Orders  user_ id by Admin", function() {
+  expect(Admin3.readOneOrderById(6).user_id).toBe("2");
+});
+
+
