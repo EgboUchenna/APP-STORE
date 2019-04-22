@@ -1,53 +1,32 @@
 const db = require("./database");
-const app = require("./app");
+const { Admin, User } = require("./app");
 
 //      ***************************     CREATE ORDER   ********************
-function Orders(user_id, products) {
-  this.user_id = user_id;
+User.prototype.createOrder = function(products) {
   this.products = products;
-
-  var time = new Date();
-  this.timeOfOrder = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
-
   var today = new Date();
-  this.dateOfOrder = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+  this.timeOfOrder =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+  this.dateOfOrder =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 
   for (var i = 1; i >= 0; ) {
     if (!db.Orders[i + ""]) {
       id = i + "";
       db.Orders[id] = {
-        user_id: this.user_id,
+        user_id: this.id,
         timeOfOrder: this.timeOfOrder,
         dateOfOrder: this.dateOfOrder,
         id: id,
-        products: this.products
+        products: products
       };
       break;
     }
     i++;
   }
-  this.id = id;
-
-
-}
-
-//  ************************** READ ALL ORDERS  ************************************
-
-Orders.prototype.readAllOrders = function() {
-  console.log(db.orders);
-  return db.Orders;
-}
-
-
-//  ************************** READ ONE ORDER BY ITS ID  ************************************
-
-Orders.prototype.readOneOrderById = function (id) {
-if(!db.Orders[id.toString()]) {
-  return 'Order not found';
-}
-return db.Orders[id.toString()];
-}
-
+};
 
 
 
