@@ -109,3 +109,7 @@ test("Read an order by its id", function() {
   expect(Admin1.readOneOrderById(2)).toEqual(db.Orders["2"]);
 });
 
+test("Create an Order", function() {
+  expect(db.Orders["1"]).toBeDefined();
+});
+
