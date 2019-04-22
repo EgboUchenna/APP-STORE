@@ -97,3 +97,7 @@ test("Orders Database has values and not empty", function() {
   expect(Object.keys(db.Orders).length).toBeGreaterThan(3);
 });
 
+test("Order to have a Unique Id", function() {
+  expect(db.Orders["1"].id).toBeTruthy();
+});
+
