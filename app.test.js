@@ -137,3 +137,14 @@ test("Orders Database has objects more than 5", function() {
   expect(Object.values(db.Orders).length).toBeGreaterThan(5);
 });
 
+test("Update Single Product should update user details", function() {
+  expect(
+    Admin1.updateOrderDetails("1", [
+      "cream",
+      "soap",
+      "toothbrush",
+      "hair-brush"
+    ])
+  ).toBeTruthy();
+});
+
