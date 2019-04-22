@@ -44,5 +44,16 @@ Admin.prototype.readOneOrderById = function(id) {
   return db.Orders[id.toString()];
 };
 
+//  ************************** UPDATE ORDER DETAILS  ************************************
+
+Admin.prototype.updateOrderDetails = function(id, products) {
+  if (!id || !products) {
+    return "Order does not exist";
+  }
+
+  db.Orders[id.toString()].products = products;
+  return true;
+};
+
 
 module.exports = { Orders };
