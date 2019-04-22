@@ -125,4 +125,11 @@ test("Read Single Orders  user_ id by Admin", function() {
   expect(Admin3.readOneOrderById(6).user_id).toBe("2");
 });
 
+test("Check elements in a Single user Orders ", function() {
+  expect(Admin3.readOneOrderById(6).products).toContain("Peanuts");
+});
+
+test("Check elements in a Single user Orders ", function() {
+  expect(Admin1.readOneOrderById(1).products).toContain("Phones");
+});
 
