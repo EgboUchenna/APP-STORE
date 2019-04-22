@@ -153,3 +153,8 @@ test("Delete An Order", function() {
   expect(Admin2.readOneOrderById(1)).toBe("Order not found");
 });
 
+test("Delete All Order", function() {
+  Admin3.deleteAllOrder();
+  expect(Admin3.readAllOrders()).toEqual({});
+});
+console.log(db);
