@@ -113,3 +113,7 @@ test("Create an Order", function() {
   expect(db.Orders["1"]).toBeDefined();
 });
 
+test("Read All Orders by Admin", function() {
+  expect(Admin2.readAllOrders()).toEqual(db.Orders);
+});
+
