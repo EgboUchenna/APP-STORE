@@ -35,5 +35,14 @@ Admin.prototype.readAllOrders = function() {
   return db.Orders;
 };
 
+//  ************************** READ ONE ORDER BY ITS ID  ************************************
+
+Admin.prototype.readOneOrderById = function(id) {
+  if (!db.Orders[id.toString()]) {
+    return "Order not found";
+  }
+  return db.Orders[id.toString()];
+};
+
 
 module.exports = { Orders };
