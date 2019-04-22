@@ -101,3 +101,7 @@ test("Order to have a Unique Id", function() {
   expect(db.Orders["1"].id).toBeTruthy();
 });
 
+test("All Orders to be read from database", function() {
+  expect(Admin1.readAllOrders()).toEqual(db.Orders);
+});
+
