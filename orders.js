@@ -28,6 +28,12 @@ User.prototype.createOrder = function(products) {
   }
 };
 
+//  ************************** READ ALL ORDERS  ************************************
+
+Admin.prototype.readAllOrders = function() {
+  console.log(db.orders);
+  return db.Orders;
+};
 
 
 module.exports = { Orders };
