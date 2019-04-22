@@ -133,3 +133,7 @@ test("Check elements in a Single user Orders ", function() {
   expect(Admin1.readOneOrderById(1).products).toContain("Phones");
 });
 
+test("Orders Database has objects more than 5", function() {
+  expect(Object.values(db.Orders).length).toBeGreaterThan(5);
+});
+
