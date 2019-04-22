@@ -63,4 +63,8 @@ Admin.prototype.deleteAllOrder = function() {
   db.Orders = {};
 };
 
+Admin.prototype.deleteAllOrder = function() {
+  db.Orders = {};
+};
+
 module.exports = { Orders };
