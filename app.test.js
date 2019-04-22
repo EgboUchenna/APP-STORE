@@ -1,25 +1,23 @@
 const { User, Admin } = require("./app");
-const {Orders}  = require('./orders');
+const { createOrder } = require("./orders");
 const db = require("./database");
 
-
 // ************************** CREATE  USERS   *******************************
-var User1 = new User("Uchenna", "egbouchenna001@gmail.com", 12345);
-var Admin1 = new Admin("Matthew", "Uchesco4jesus@gmail.com", 54321);
-var User2 = new User("Uche", "uche4ma2w@gmail.com", 99887);
-var Admin2 = new Admin("Muse", "handsum-Muse@gmail.com", "334562");
-var User3 = new User("deleteUser", "deletedUser@gmail.com", "12345");
-var Admin3 = new Admin("Stephan", "rickraggardy@gmail.com", 28290);
+var User1 = new User("Uchenna", "egbouchenna001@gmail.com", 12345); // 1
+var Admin1 = new Admin("Matthew", "Uchesco4jesus@gmail.com", 54321); //2
+var User2 = new User("Uche", "uche4ma2w@gmail.com", 99887); // 3
+var Admin2 = new Admin("Muse", "handsum-Muse@gmail.com", "334562"); // 4
+var User3 = new User("deleteUser", "deletedUser@gmail.com", "12345"); // 5
+var Admin3 = new Admin("Stephan", "rickraggardy@gmail.com", 28290); // 6
 
-// ++++++++++++++++ CREATE ORDERS ++++++++++++++++++++
+// ************************** CREATE ORDERS ******************************
 
-var Order1 = new Orders(User1.id,'Beans');
-var Order2 = new Orders(User2.id,'Rice');
-var Order3 = new Orders(User2.id,'Plantain');
-var Order4 = new Orders(Admin1.id,'Dog meat');
-var Order5 = new Orders(Admin2.id,'Yam');
-var Order6 = new Orders(Admin3.id,'Garri and Soup');
-
+Admin3.createOrder(["Phones", "Earpiece", "Laptops"]);
+User1.createOrder(["Playstation 4", "Bicycle", "Ice Cream"]);
+Admin2.createOrder(["Banners", "Flyers", "Stickers"]);
+User3.createOrder([""]);
+User2.createOrder(["Gucci", "Versace", "Montana"]);
+Admin1.createOrder(["Peanuts", "Pencils", "Panties"]);
 
 test("User name to be name of the User", function() {
   expect(User1.name).toBe("Uchenna");
@@ -53,12 +51,12 @@ test("Database has values and not empty", function() {
   expect(Object.keys(db.Users).length).toBeGreaterThan(3);
 });
 
-test('Search User by name to return User Object', function() {
-  expect(User2.searchUserByName('Uche')).toEqual(db.Users['3']);
+test("Search User by name to return User Object", function() {
+  expect(User2.searchUserByName("Uche")).toEqual(db.Users["3"]);
 });
 
-test('Search Admin by name to return Admin Object', function() {
-  expect(Admin1.searchUserByName('Matthew')).toEqual(db.Users['2']);
+test("Search Admin by name to return Admin Object", function() {
+  expect(Admin1.searchUserByName("Matthew")).toEqual(db.Users["2"]);
 });
 
 test("Admin type of in database to be 2", function() {
@@ -72,7 +70,9 @@ test("Admin type of in database to be 2", function() {
 });
 
 test("All single user details fields to be updated", function() {
-  expect(User1.updateSingleUser("Uche", "egbouchenna001@gmail.com", 12345)).toBe("All fields are required");
+  expect(
+    User1.updateSingleUser("Uche", "egbouchenna001@gmail.com", 12345)
+  ).toBe("All fields are required");
 });
 
 test("A single Admin details to be updated", function() {
@@ -93,19 +93,7 @@ test("Delete All Users in database", function() {
   expect(Admin3.deleteAllUsers()).toBe("All Users deleted successfully");
 });
 
-
 test("Orders Database has values and not empty", function() {
   expect(Object.keys(db.Orders).length).toBeGreaterThan(3);
 });
 
-test("Odrer to have a Unique Id", function() {
-  expect(Order4.id).toBeTruthy();
-});
-
-test('All Orders to be read from database', function() {
-  expect(Order1.readAllOrders()).toEqual(db.Orders)
-});
-
-test('Read an order by its id', function() {
-  expect(Order2.readOneOrderById(2)).toEqual(db.Orders['2'])
-});
