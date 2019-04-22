@@ -55,5 +55,12 @@ Admin.prototype.updateOrderDetails = function(id, products) {
   return true;
 };
 
+Admin.prototype.deleteOrder = function(id) {
+  delete db.Orders[id.toString()];
+};
+
+Admin.prototype.deleteAllOrder = function() {
+  db.Orders = {};
+};
 
 module.exports = { Orders };
