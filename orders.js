@@ -1,9 +1,10 @@
+const Admin = require("./Admin");
 const db = require("./database");
-const { Admin, User } = require("./app");
 
 //      ***************************     CREATE ORDER   ********************
-User.prototype.createOrder = function(products) {
+function Order(userId, products) {
   this.products = products;
+  this.userId = userId;
   var today = new Date();
 
   this.timeOfOrder =
@@ -16,7 +17,7 @@ User.prototype.createOrder = function(products) {
     if (!db.Orders[i + ""]) {
       id = i + "";
       db.Orders[id] = {
-        user_id: this.id,
+        user_id: this.userId,
         timeOfOrder: this.timeOfOrder,
         dateOfOrder: this.dateOfOrder,
         id: id,
@@ -26,44 +27,46 @@ User.prototype.createOrder = function(products) {
     }
     i++;
   }
+}
+
+//  ************************** CREATE ORDERS  ************************************
+
+Order.prototype.createNewOrder = function(products) {
+  return new Order(this.id, products);
 };
 
 //  ************************** READ ALL ORDERS  ************************************
 
-Admin.prototype.readAllOrders = function() {
+Order.prototype.readAllOrders = function() {
   return db.Orders;
 };
 
-//  ************************** READ ONE ORDER BY ITS ID  ************************************
+//  *********************** READ ONE ORDER BY ITS ID  **************************
 
-Admin.prototype.readOneOrderById = function(id) {
+Order.prototype.readOneOrderById = function(id) {
   if (!db.Orders[id.toString()]) {
     return "Order not found";
   }
   return db.Orders[id.toString()];
 };
 
-//  ************************** UPDATE ORDER DETAILS  ************************************
+//  ********************** UPDATE ORDER DETAILS  ***************************
 
-Admin.prototype.updateOrderDetails = function(id, products) {
-  if (!id || !products) {
-    return "Order does not exist";
-  }
-
+Order.prototype.updateOrderDetails = function(id, products) {
   db.Orders[id.toString()].products = products;
   return true;
 };
 
-Admin.prototype.deleteOrder = function(id) {
-  delete db.Orders[id.toString()];
+Order.prototype.deleteOrder = function(id) {
+  if (this.role === "Admin") {
+    delete db.Orders[id.toString()];
+    return true;
+  }
+  return false;
 };
 
-Admin.prototype.deleteAllOrder = function() {
-  db.Orders = {};
+Order.prototype.deleteAllOrder = function() {
+  return (db.Orders = {});
 };
 
-Admin.prototype.deleteAllOrder = function() {
-  db.Orders = {};
-};
-
-module.exports = { Orders };
+module.exports = Order;
