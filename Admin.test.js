@@ -38,7 +38,7 @@ test("Admin to read one order by id", function() {
 });
 
 test("Admin to update order details", function() {
-  expect(adminUser1.updateOrderDetails(3, ["Tea", "Milk", "Milo"]));
+  expect(adminUser1.updateOrderDetails(3, ["Tea", "Milk", "Milo"])).toBeTruthy();
 });
 
 test("Admin to delete an order", function() {
