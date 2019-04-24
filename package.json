@@ -4,7 +4,7 @@
   "description": "A simple e-commerce app created with Javascript Prototype Oriented Programming that implements a simple CRUD operations of users and admin in database and tested with Jest.",
   "main": "app.js",
   "scripts": {
-    "test": "jest -coverage"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
