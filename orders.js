@@ -38,20 +38,29 @@ Order.prototype.createNewOrder = function(products) {
 //  ************************** READ ALL ORDERS  ************************************
 
 Order.prototype.readAllOrders = function() {
+  if (this.role === "Admin") {
     return db.Orders;
+  }
+  return false;
 };
 
 //  *********************** READ ONE ORDER BY ITS ID  **************************
 
 Order.prototype.readOneOrderById = function(id) {
+  if (this.role === "Admin") {
     return db.Orders[id.toString()];
+  }
+  return false;
 };
 
 //  ********************** UPDATE ORDER DETAILS  ***************************
 
 Order.prototype.updateOrderDetails = function(id, products) {
+  if (this.role === "Admin") {
   db.Orders[id.toString()].products = products;
   return true;
+  }
+  return false;
 };
 
 Order.prototype.deleteOrder = function(id) {
@@ -63,7 +72,10 @@ Order.prototype.deleteOrder = function(id) {
 };
 
 Order.prototype.deleteAllOrder = function() {
-    return db.Orders = {};
+  if (this.role === "Admin") {
+  return (db.Orders = {});
+  }
+  return false;
 };
 
 module.exports = Order;
