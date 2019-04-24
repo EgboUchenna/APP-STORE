@@ -2,7 +2,7 @@ const db = require("./database");
 const Admin = require("./Admin");
 const Order = require("./orders");
 
-//      ***************************     CREATE USER   ********************
+//      ***************************   CREATE USER   ************************
 function User(name, email, password, role) {
   this.name = name;
   this.email = email;
@@ -26,7 +26,7 @@ function User(name, email, password, role) {
 
   //  ********************** READ A SINGLE USER BY HIS ID  **********************
   this.readSingleUser = function(id) {
-    return id ? db.Users[id.toString()] : "Not a User";
+    return db.Users[id.toString()];
   };
 
   //  *********************** UPDATE DETAILS OF A USER  ************************
@@ -39,7 +39,6 @@ function User(name, email, password, role) {
     db.Users[id.toString()].name = name;
     db.Users[id.toString()].email = email;
     db.Users[id.toString()].password = password;
-    console.log("User updated successfully");
     return "User updated successfully";
   };
 
@@ -48,11 +47,13 @@ function User(name, email, password, role) {
   this.searchUserByName = function(name) {
     for (var userName in db.Users) {
       if (db.Users[userName].name == name) {
-        console.log(db.Users[userName]);
         return db.Users[userName];
       }
     }
+    return "No results found!";
   };
 }
-User.prototype = Order.prototype;
+
+User.prototype = Object.create(Order.prototype);
+User.prototype.constructor = User;
 module.exports = User;
