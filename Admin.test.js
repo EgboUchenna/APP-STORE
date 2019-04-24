@@ -1,7 +1,7 @@
 const Admin = require("./Admin");
 const User = require("./User");
 const Order = require("./orders");
-// const db = require("./database");
+const db = require("./database");
 
 // ************************** CREATE  ADMINS   *******************************
 var adminUser1 = new Admin("King", "king@gmail.com", "password");
@@ -9,6 +9,7 @@ var adminUser2 = new Admin("Matthew", "Uchesco4jesus@gmail.com", "12345");
 var adminUser3 = new Admin("Muse", "handsum-Muse@gmail.com", "334562");
 var adminUser4 = new Admin("Stephan", "rickraggardy@gmail.com", 28290);
 
+// console.log(adminUser1);
 
 test("Admin can create a user", function() {
   var newUser = adminUser1.createNewUser("Uchenna", "uche@gmail.com", "uche");
@@ -17,6 +18,8 @@ test("Admin can create a user", function() {
 
 test("Admin can create new Order", function() {
   var newOrder = adminUser1.createNewOrder(["milo", "milk"]);
+  var newOrder = adminUser1.createNewOrder(["milo", "milk"]);
+  var newOrder = adminUser1.createNewOrder(["milo", "milk"]);
   expect(newOrder).toBeTruthy();
 });
 
@@ -24,21 +27,13 @@ test("Admin can delete  Order", function() {
   expect(adminUser1.deleteOrder(1)).toBeTruthy();
 });
 
-// var User1 = new User("Uchenna", "egbouchenna001@gmail.com", 12345); // 1
-// var Admin1 = new Admin("Matthew", "Uchesco4jesus@gmail.com", 54321); //2
-// var User2 = new User("Uche", "uche4ma2w@gmail.com", 99887); // 3
-// var Admin2 = new Admin("Muse", "handsum-Muse@gmail.com", "334562"); // 4
-// var User3 = new User("deleteUser", "deletedUser@gmail.com", "12345"); // 5
-// var Admin3 = new Admin("Stephan", "rickraggardy@gmail.com", 28290); // 6
+test('Admin to output single user object', function() {
+    expect(adminUser2.readSingleUser(1)).toEqual(db.Users['1']);
+});
 
-// ************************** CREATE ORDERS ******************************
-
-// Admin3.createOrder(["Phones", "Earpiece", "Laptops"]);
-// User1.createOrder(["Playstation 4", "Bicycle", "Ice Cream"]);
-// Admin2.createOrder(["Banners", "Flyers", "Stickers"]);
-// User3.createOrder([""]);
-// User2.createOrder(["Gucci", "Versace", "Montana"]);
-// Admin1.createOrder(["Peanuts", "Pencils", "Panties"]);
+test('Admin to read all orders', function() {
+    expect(adminUser3.readAllOrders()).toEqual(db.Orders);
+});
 
 // test("User name to be name of the User", function() {
 //   expect(User1.name).toBe("Uchenna");
