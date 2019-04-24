@@ -32,3 +32,7 @@ test("User cannot read all orders", function() {
   test("User cannot update order details", function() {
     expect(user1.updateOrderDetails(3, ["Tea", "Milk", "Milo"])).toBeFalsy();
   });
+
+  test("User cannot delete all orders", function() {
+    expect(user3.deleteAllOrder()).toBeFalsy();
+  });
