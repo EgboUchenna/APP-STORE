@@ -28,3 +28,7 @@ test("User cannot read one order by id", function() {
 test("User cannot read all orders", function() {
     expect(user3.readAllOrders()).toBeFalsy();
   });
+
+  test("User cannot update order details", function() {
+    expect(user1.updateOrderDetails(3, ["Tea", "Milk", "Milo"])).toBeFalsy();
+  });
