@@ -24,3 +24,7 @@ test("User to output single user object", function() {
 test("User cannot read one order by id", function() {
   expect(user3.readOneOrderById(3)).toBeFalsy();
 });
+
+test("User cannot read all orders", function() {
+    expect(user3.readAllOrders()).toBeFalsy();
+  });
