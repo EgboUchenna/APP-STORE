@@ -29,53 +29,35 @@ function Order(userId, products) {
   }
 }
 
-//  ************************** CREATE ORDERS  ************************************
-
-Order.prototype.createNewOrder = function(products) {
-  return new Order(this.id, products);
-};
-
 //  ************************** READ ALL ORDERS  ************************************
 
 Order.prototype.readAllOrders = function() {
-  if (this.role === "Admin") {
-    return db.Orders;
-  }
-  return false;
+  return db.Orders;
 };
 
 //  *********************** READ ONE ORDER BY ITS ID  **************************
 
 Order.prototype.readOneOrderById = function(id) {
-  if (this.role === "Admin") {
-    return db.Orders[id.toString()];
-  }
-  return false;
+  return db.Orders[id.toString()];
 };
 
 //  ********************** UPDATE ORDER DETAILS  ***************************
 
 Order.prototype.updateOrderDetails = function(id, products) {
-  if (this.role === "Admin") {
-    db.Orders[id.toString()].products = products;
-    return true;
-  }
-  return false;
+  db.Orders[id.toString()].products = products;
+  return true;
 };
+
+//  ********************** DELETE AN ORDER   ***************************
 
 Order.prototype.deleteOrder = function(id) {
-  if (this.role === "Admin") {
-    delete db.Orders[id.toString()];
-    return true;
-  }
-  return false;
+  return delete db.Orders[id.toString()];
 };
 
+//  ********************** DELETE ALL ORDERS  ***************************
+
 Order.prototype.deleteAllOrder = function() {
-  if (this.role === "Admin") {
-    return (db.Orders = {});
-  }
-  return false;
+  return (db.Orders = {});
 };
 
 module.exports = Order;

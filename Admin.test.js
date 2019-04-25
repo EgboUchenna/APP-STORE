@@ -12,6 +12,7 @@ var adminUser4 = new Admin("Stephan", "rickraggardy@gmail.com", 28290);
 test("Admin can create a user", function() {
   var newUser = adminUser1.createNewUser("Uchenna", "uche@gmail.com", "uche");
   expect(newUser.name).toBe("Uchenna");
+  console.log(db.Users);
 });
 
 test("Admin can create new Order", function() {
@@ -26,11 +27,11 @@ test("Admin can delete  Order", function() {
 });
 
 test("Admin to output single user object", function() {
-  expect(adminUser2.readSingleUser(1)).toEqual(db.Users["1"]);
+  expect(adminUser1.readSingleUser(1)).toEqual(db.Users["1"]);
 });
 
 test("Admin to read all orders", function() {
-  expect(adminUser3.readAllOrders()).toEqual(db.Orders);
+  expect(adminUser1.readAllOrders()).toEqual(db.Orders);
 });
 
 test("Admin to read one order by id", function() {

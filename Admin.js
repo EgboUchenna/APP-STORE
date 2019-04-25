@@ -1,6 +1,6 @@
 //        ++++++++++++++++++++++ ADMIN FUNCTIONALITIES  ++++++++++++++++++++++++
+const order = require("./orders");
 const User = require("./User");
-const Order = require("./orders");
 const db = require("./database");
 
 function Admin(name, email, password) {
@@ -33,6 +33,26 @@ Admin.prototype.deleteUser = function(id) {
 
 Admin.prototype.deleteAllUsers = function() {
   return (db.Users = {});
+};
+
+Admin.prototype.deleteOrder = function(orderId) {
+  return order.prototype.deleteOrder(orderId);
+};
+
+Admin.prototype.deleteAllOrder = function() {
+  return order.prototype.deleteAllOrder();
+};
+
+Admin.prototype.readAllOrders = function() {
+  return order.prototype.readAllOrders();
+};
+
+Admin.prototype.readOneOrderById = function (orderId) {
+  return order.prototype.readOneOrderById(orderId);
+};
+
+Admin.prototype.updateOrderDetails = function (orderId, products) {
+  return order.prototype.updateOrderDetails(orderId, products);
 };
 
 module.exports = Admin;
