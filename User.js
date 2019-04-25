@@ -23,37 +23,39 @@ function User(name, email, password, role) {
     i++;
   }
   this.id = id;
-
-  //  ********************** READ A SINGLE USER BY HIS ID  **********************
-  this.readSingleUser = function(id) {
-    return db.Users[id.toString()];
-  };
-
-  //  *********************** UPDATE DETAILS OF A USER  ************************
-
-  this.updateSingleUser = function(id, name, email, password) {
-    if (!id || !name || !email || !password) return "All fields are required";
-
-    if (id.toString() !== this.id) return false;
-
-    db.Users[id.toString()].name = name;
-    db.Users[id.toString()].email = email;
-    db.Users[id.toString()].password = password;
-    return "User updated successfully";
-  };
-
-  //       ******************************  SEARCH USER BY NAME  **************************
-
-  this.searchUserByName = function(name) {
-    for (var userName in db.Users) {
-      if (db.Users[userName].name == name) {
-        return db.Users[userName];
-      }
-    }
-    return "No results found!";
-  };
 }
 
-User.prototype = Object.create(Order.prototype);
-User.prototype.constructor = User;
+//  ********************** READ A SINGLE USER BY HIS ID  **********************
+User.prototype.readSingleUser = function(id) {
+  return db.Users[id.toString()];
+};
+
+//  *********************** UPDATE DETAILS OF A USER  ************************
+
+User.prototype.updateSingleUser = function(id, name, email, password) {
+  if (!id || !name || !email || !password) return "All fields are required";
+
+  if (id.toString() !== this.id) return false;
+
+  db.Users[id.toString()].name = name;
+  db.Users[id.toString()].email = email;
+  db.Users[id.toString()].password = password;
+  return "User updated successfully";
+};
+
+//       ******************************  SEARCH USER BY NAME  **************************
+
+User.prototype.searchUserByName = function(name) {
+  for (var userName in db.Users) {
+    if (db.Users[userName].name == name) {
+      return db.Users[userName];
+    }
+  }
+  return "No results found!";
+};
+
+User.prototype.createNewOrder = function(products) {
+  return new Order(this.userId, products);
+};
+
 module.exports = User;
