@@ -57,8 +57,8 @@ Order.prototype.readOneOrderById = function(id) {
 
 Order.prototype.updateOrderDetails = function(id, products) {
   if (this.role === "Admin") {
-  db.Orders[id.toString()].products = products;
-  return true;
+    db.Orders[id.toString()].products = products;
+    return true;
   }
   return false;
 };
@@ -73,7 +73,7 @@ Order.prototype.deleteOrder = function(id) {
 
 Order.prototype.deleteAllOrder = function() {
   if (this.role === "Admin") {
-  return (db.Orders = {});
+    return (db.Orders = {});
   }
   return false;
 };
