@@ -1,0 +1,29 @@
+{
+  "name": "app_store",
+  "version": "1.0.0",
+  "description": "A simple e-commerce app created with Javascript Prototype Oriented Programming that implements a simple CRUD operations of users and admin in database and tested with Jest.",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EgboUchenna/APP-STORE.git"
+  },
+  "keywords": [
+    "javascript",
+    "ES5",
+    "Jest",
+    "Prototype",
+    "OOP"
+  ],
+  "author": "Egbo Uchenna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EgboUchenna/APP-STORE/issues"
+  },
+  "homepage": "https://github.com/EgboUchenna/APP-STORE#readme",
+  "devDependencies": {
+    "jest": "^24.7.1"
+  }
+}

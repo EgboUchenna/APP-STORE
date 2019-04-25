@@ -3,7 +3,7 @@
 > A simple e-commerce app created with Javascript Prototype Oriented Programming that implements a simple CRUD operations of users and admin in database and tested with Jest.
 
 ## Table Of Contents 
-___
+
 * [General info](#general-info)
 
 * [Technologies](#technologies)
@@ -15,11 +15,11 @@ ___
 * [Inspiration](#inspiration)
 
 ## General Info
----
+
 This project is a simple e-commerce app.
 
 ## Technologies
----
+
 Project is created with: 
 
 * ES5 Prototype Oriented Programming.
@@ -27,7 +27,7 @@ Project is created with:
 * Jest version: 24.7.1
 
 ## Setup
----
+
 To run this project, install it locally using npm:
 
 ```
@@ -35,9 +35,9 @@ $ cd ../app.js
 
 $ npm i -y
 
-Add Jest as a dependency :
+Add Jest as a dev dependency :
 
-$ npm i -D jest
+$ npm i --save jest
 
 Inside your package.json file change scripts test to jest:
 
@@ -45,12 +45,11 @@ Inside your package.json file change scripts test to jest:
     "test": "jest"
   },
 
-$ npm jest
+$ npm test
 
 ```
 
 ## Features
-___
 
 * Creates Users and Orders.
 * Read Users and Orders.
@@ -60,6 +59,5 @@ ___
 * A unique id for all Users and Orders.
 
 ## Inspiration
----
 
 This app is based on Javascript Object oriented Programming with ES5 prototype. An exercise to implement my understanding and implementation of ES5 Objects Prototypes.
